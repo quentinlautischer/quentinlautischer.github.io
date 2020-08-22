@@ -1,0 +1,120 @@
+[
+    {
+        "title": "QVision",
+        "location": "forge",
+        "date": "2020-01-01",
+        "imgSrc": "assets/bits.jpg",
+        "categories": ["C++", "Computer Vision", "Automation"],
+        "description": "This project is a toolbox that provides system automation through multiple means, most notably, computer vision. This project is a playground for me to explore and gain technical skills in C++. QVision is short for Control Vision.",
+        "extendedInfo": {}
+    },
+    {
+        "title": "TaskT",
+        "location": "forge",
+        "date": "2020-01-01",
+        "imgSrc": "assets/bits.jpg",
+        "categories": ["React", "UX", "Full-stack", "Authentication"],
+        "description": "This project is an account-based tracking system for absolute and relative todos ideal for house maintenance. Setup relative recurrences for things like vacuuming and fridge cleaning. Setup absolute recurrences for things like water heater maintenance and filter changes.",
+        "extendedInfo": {}
+    },
+    {
+        "title": "Tether",
+        "location": "forge",
+        "date": "2020-01-01",
+        "imgSrc": "assets/bits.jpg",
+        "categories": ["React", "UX", "Client/Server", "Authentication"],
+        "description": "This project is a shared content browsing experience. Two vertical scrolls, one is yours the other is shared.",
+        "extendedInfo": {}
+    },
+    {
+        "title": "2D Side Scrolling Game",
+        "location": "vault",
+        "date": "2017-04-01",
+        "imgSrc": "assets/2dsidescroll.png",
+        "categories": ["Python", "OOP", "Game"],
+        "vidSrc": "http://www.youtube.com/embed/gw-JDEg3NL8",
+        "description": "This was a project made using PyGame and Python3. This project was intended to incorporate many programming techniques such as OOP design principles, graph theory, server/client communications, AI design, dynamic programming and scripted encounters."
+    },
+    {
+        "title": "Item Trading Android App",
+        "location": "vault",
+        "date": "2017-04-01",
+        "imgSrc": "assets/itemtrade.png",
+        "categories": ["Android", "Java", "Mobile", "MVC"],
+        "vidSrc": "http://www.youtube.com/embed/MbHIZUPE8Ck?start=28",
+        "description": "This was a group project consisting of six members. This project required lots of planning and design before implementation while also exercising the use of distributed version control among members. The App was designed using MVC as an architectural pattern, techniques such as threading (UI/Network), caching, and elastic-search databases were explored and utilized."
+    },
+    {
+        "title": "3D Model Viewer",
+        "location": "vault",
+        "date": "2017-04-01",
+        "imgSrc": "assets/3dmodelviewer.png",
+        "categories": ["C++", "OpenGL", "3D-Graphics"],
+        "description": "This project was made using OpenGL and C++. It was a model viewer that allowed for the import and export of 3D obj files. They would be constructed and rendered in the application. Using linear algebra the program can perform matrix transformations to allow for translation and rotation of the model and the scene camera."
+    },
+    {
+        "title":  "Arduino Pocket Game",
+        "location": "vault",
+        "date":   "2017-04-01",
+        "imgSrc": "assets/arduinogame.png",
+        "categories": ["C", "Arduino"],
+        "vidSrc": "http://www.youtube.com/embed/KgV56NStx8Y",
+        "description": "This project was a 2D mini-game programmed on an Arduino in an intro to programming in C course."
+    },
+    {
+        "title": "Computer Vision Bot",
+        "location": "vault",
+        "date": "2017-04-01",
+        "imgSrc": "assets/bits.jpg",
+        "categories": ["Python", "OpenCV", "Bot"],
+        "description": "This project was something I created while exploring computer vision. I created a bot capable of playing World of Warcraft through computer vision. The program identified and tracked in real-time player resources displayed on the screen. Using this information and the guidance of a script, the program was capable of reacting dynamically. In this case, I had created a bot capable of playing alongside four other real players."
+    },
+    {
+        "title": "Encryption Project",
+        "location": "vault",
+        "date": "2017-04-01",
+        "imgSrc": "assets/bits.jpg",
+        "categories": ["C", "Security", "Arduino"],
+        "description": "This project involved implementing Diffie-Hellman Encryption methods for communications between two Arduinos"
+    },
+    {
+        "title":  "NoteDown",
+        "location": "vault",
+        "date":   "2017-04-01",
+        "imgSrc": "assets/NoteDown.png",
+        "categories": ["Javascript", "ReactJS", "Electron", "Node", "MongoDB"],
+        "description": "This was my final year capstone project. We created a note-taking app that would interpret and render Markdown notes in real-time. We had multi-platform support for a Desktop Client(Windows/Mac) and a mobile client(iOS/Android). We built a custom Markdown parser and handled concurrent sessions on the same set of notes."
+    },
+    {
+        "title": "Procnanny - Multi-System Task Monitor",
+        "location": "vault",
+        "date": "2017-04-01",
+        "imgSrc": "assets/bits.jpg",
+        "categories": ["C", "Unix", "Client/Server"],
+        "description": "This project, Procnanny, was a Unix task monitor implemented in C. Provided a list of programs to monitor the system would fork children tasked with monitoring the lifespan of a given process, ending them, and then recycling itself for use elsewhere. Phase 3 of the project had us expand the program to function with many host clients connected to one central Procnanny server."
+    },
+    {
+        "title": "Restaurant Finder",
+        "location": "vault",
+        "date": "2017-04-01",
+        "imgSrc": "assets/bits.jpg",
+        "categories": ["C", "Python", "Algorithms", "Arduino"],
+        "description": "This project used a python server to calculate the least cost path using Dijkstra's Algorithm on graph data. Start and endpoints were sent from the Arduino (client) to the Python server were the least cost path was calculated. The path data would be sent back to the Arduino client which would draw the path on a map printed to the LCD. This project later expanded to find the closest restaurants using a sorting Algorithm."
+    },
+    {
+        "title": "Collaborative Ruby Projects",
+        "location": "vault",
+        "date":   "2017-04-01",
+        "imgSrc": "assets/connectallRuby.png",
+        "categories": ["Ruby", "Games", "Software-Eng"],
+        "description":  "A series of small programs to explore software design in Ruby. The programs explore functional code practices using contracts to describe program behaviour."
+    },
+    {
+        "title":  "SQL Airport Flight Booking",
+        "location": "vault",
+        "date":   "2017-04-01",
+        "imgSrc": "assets/bits.jpg",
+        "categories": ["SQL", "Java", "Databases"],
+        "description": "SQL Database of Flights and Bookings. A user interface was created to search, lookup, and book flights using the SQL based system."
+    }
+]
