@@ -37,7 +37,11 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
 
       this.projectsPageRef = React.createRef();
 
-      this.state = {navHovered: false, pageChanged: false, navQueued: NavQueuePosition.Top, history: createBrowserHistory({}) };
+      this.state = { 
+        navHovered: false, 
+        pageChanged: false, 
+        navQueued: NavQueuePosition.Top, 
+        history: createBrowserHistory({basename: process.env.PUBLIC_URL}) };
     }
 
     componentDidMount() {
@@ -51,7 +55,7 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
         const leftQd = this.state.navQueued === NavQueuePosition.Left;
         
         return (
-            <Router history={this.state.history} >
+            <Router history={this.state.history}>
             <Container className="d-flex mt-5 h-100" onWheel={this.onWheel} onScroll={this.onScroll}>
                 <Switch>
                 <Route path="/projects/QVision">
