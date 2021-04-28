@@ -43,6 +43,9 @@ class Card extends React.Component<CardProps> {
                     { this.props.item.vidSrc &&
                         <Badge className='youtube' variant='secondary'><a href={this.props.item.vidSrc}>YouTube</a></Badge>
                     }
+                    { this.props.item.appSrc &&
+                        <Badge className='heroku' variant='secondary'><a href={this.props.item.appSrc}>Web App</a></Badge>
+                    }
                 </BSCard.Body>
             </BSCard>);
     }

@@ -71,6 +71,7 @@ class Projects extends React.Component<ProjectsProps, ProjectsState> {
             categories: item.categories,
             imgSrc: item.imgSrc,
             vidSrc: item.vidSrc,
+            appSrc: item.appSrc,
             description: item.description,
         } as CardItem;
 

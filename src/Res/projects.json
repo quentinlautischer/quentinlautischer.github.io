@@ -12,18 +12,19 @@
         "title": "TaskT",
         "location": "forge",
         "date": "2020-01-01",
-        "imgSrc": "assets/bits.jpg",
+        "imgSrc": "assets/taskt.png",
         "categories": ["React", "UX", "Full-stack", "Authentication"],
-        "description": "This project is an account-based tracking system for absolute and relative todos ideal for house maintenance. Setup relative recurrences for things like vacuuming and fridge cleaning. Setup absolute recurrences for things like water heater maintenance and filter changes.",
+        "description": "This project is an account-based tracking system for absolute and relative todos. Ideal for house maintenance. Setup relative recurrences for things like vacuuming and fridge cleaning. Setup absolute recurrences for things like taxes and furnace filter changes.",
+        "appSrc": "https://projektq-taskt.herokuapp.com/",
         "extendedInfo": {}
     },
     {
         "title": "Tether",
         "location": "forge",
-        "date": "2020-01-01",
+        "date": "2020-05-01",
         "imgSrc": "assets/bits.jpg",
-        "categories": ["React", "UX", "Client/Server", "Authentication"],
-        "description": "This project is a shared content browsing experience. Two vertical scrolls, one is yours the other is shared.",
+        "categories": ["Rust", "Protocols", "WebAssembly"],
+        "description": "Dance of the Protocols. This project is for me to learn network protocols while producing an interactive app for learning protocols",
         "extendedInfo": {}
     },
     {

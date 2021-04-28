@@ -7,6 +7,7 @@ export interface Project {
     categories: string[],
     imgSrc: string,
     vidSrc?: string | null,
+    appSrc?: string | null,
     description: string,
     extendedInfo?: any
 }
@@ -17,6 +18,7 @@ export interface CardItem {
     categories: string[],
     imgSrc?: string | null,
     vidSrc?: string | null,
+    appSrc?: string | null,
     description: string,
     extendedInfo?: any;
 }

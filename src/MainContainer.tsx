@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from 'react';
-import { Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter, Switch, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
  
 import Home from './Pages/Home';
@@ -55,7 +55,7 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
         const leftQd = this.state.navQueued === NavQueuePosition.Left;
         
         return (
-            <Router history={this.state.history}>
+            <HashRouter>
             <Container className="d-flex mt-5 h-100" onWheel={this.onWheel} onScroll={this.onScroll}>
                 <Switch>
                 <Route path="/projects/QVision">
@@ -109,7 +109,7 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
               <Route exact path="/">                 
               </Route>
               </Container>
-          </Router>
+          </HashRouter>
         );
     }
 

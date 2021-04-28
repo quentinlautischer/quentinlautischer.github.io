@@ -5,7 +5,7 @@ $primary-darkest: hsla(223, 36%, 35%, 1);
 $primary-dark: hsla(222, 29%, 61%, 1);
 $primary-light: hsla(216, 18%, 75%, 1);
 $primary-lightest: hsla(210, 11%, 83%, 1);
-$background: hsla(60, 4%, 89%, 1);
+$background: rgb(226, 228, 228);
 $button-background: hsla(60, 4%, 97%, 1);
 
 html, div, nav {
@@ -190,11 +190,23 @@ a:hover {
   background-color: whitesmoke;
 }
 
+.card-img-top {
+  border-top: #BBB solid 1px;
+  border-left: #BBB solid 1px;
+  border-right: #BBB solid 1px;
+
+}
+
 .badge {
   margin: 2px;
 
   &.youtube {
     background-color: #FF0000;
+    color: white;
+  }
+
+  &.heroku {
+    background-color: #79589f;
     color: white;
   }
 }
