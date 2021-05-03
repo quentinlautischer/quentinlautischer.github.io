@@ -9,6 +9,7 @@ interface CardListProps<T> {
     items: T[]
     toCardItem: (arg0: T) => CardItem;
     columns: boolean;
+    routeTo: (path: string) => void;
 }
 
 class CardList<T> extends React.Component<CardListProps<T>> {
@@ -23,7 +24,7 @@ class CardList<T> extends React.Component<CardListProps<T>> {
     cards = () => {
         return this.props.items.map(i => {
             let item = this.props.toCardItem(i);
-            return (<Card key={item.title} item={item} />)
+            return (<Card key={item.title} item={item} routeTo={this.props.routeTo} />)
         })
     }
 }

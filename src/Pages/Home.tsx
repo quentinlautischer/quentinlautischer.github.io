@@ -9,7 +9,11 @@ import { GitHub as GitHubIcon } from 'react-feather';
 import { Linkedin as LinkedinIcon } from 'react-feather';
 import { Mail as EmailIcon } from 'react-feather';
 
-class Home extends React.Component {
+interface HomeProps {
+    routeTo: (path: string) => void;
+}
+
+class Home extends React.Component<HomeProps> {
     render() {
         return (
         <div className="d-flex align-self-center align-self-center-offset">
@@ -36,7 +40,7 @@ class Home extends React.Component {
                     </SquareButton>
                 </div>
             </div>
-            <Nav />
+            <Nav routeTo={this.props.routeTo} />
         </div>);
     }
 }

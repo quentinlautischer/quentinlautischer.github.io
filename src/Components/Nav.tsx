@@ -6,7 +6,11 @@ import ParalaxItem from './ParalaxItem';
 
 import { Navbar, NavItem } from 'react-bootstrap';
 
-class Nav extends React.Component {
+interface NavProps {
+  routeTo: (path: string) => void;
+}
+
+class Nav extends React.Component<NavProps> {
 
     render() {
       return (
@@ -16,24 +20,24 @@ class Nav extends React.Component {
             <Navbar.Collapse id="basic-navbar-nav"  >
               <div className="d-flex flex-column">
                 <NavItem className='grey-box'>
-                  <NavLink to="/projects">
+                  <a onClick={() => this.props.routeTo("/projects")}>
                     <p>Projects</p>
-                  </NavLink>
+                  </a>
                 </NavItem>
                 <SubNavItem className='grey-box align-self-end'>
-                  <NavLink to="/projects/QVision">
+                  <a onClick={() => this.props.routeTo("/projects/QVision")}>
                     <p>QVision</p>
-                  </NavLink>
+                  </a>
                 </SubNavItem>
                 <SubNavItem className='grey-box align-self-end'>
-                  <NavLink to="/projects/TaskT">
+                  <a onClick={() => this.props.routeTo("/projects/TaskT")}>
                     <p>TaskT</p>
-                  </NavLink>
+                  </a>
                 </SubNavItem>
                 <SubNavItem className='grey-box align-self-end'>
-                  <NavLink to="/projects/Tether">
+                  <a onClick={() => this.props.routeTo("/projects/Tether")}>
                     <p>Tether</p>
-                  </NavLink>
+                  </a>
                 </SubNavItem>
               </div>
             </Navbar.Collapse>

@@ -20,6 +20,11 @@ body {
   overflow-y: hidden;
 }
 
+.projects-page {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 #root {
   height: 100%;
 }
@@ -106,6 +111,7 @@ svg {
 .nav-item {
   margin: 5px;
   max-height: 55px;
+  user-select: none;
 }
 
 .sub-nav-item {
@@ -179,6 +185,10 @@ a {
     top: 2%;
     left: 2%;
     margin-left: unset;
+  }
+
+  &:hover {
+    color: orange;
   }
 }
 

@@ -12,6 +12,7 @@ interface ProjectsState {
 }
 
 interface ProjectsProps {
+    routeTo: (path: string) => void;
 }
 
 class Projects extends React.Component<ProjectsProps, ProjectsState> {
@@ -30,14 +31,14 @@ class Projects extends React.Component<ProjectsProps, ProjectsState> {
                 <h2 className="mt-5">The Forge</h2>
                 <p>{Constants.FORGE_DESCRIPTION}</p>
                 </div>
-                <CardList items={this.forgeItems()} toCardItem={this.projectToCardItem} columns={false} />
+                <CardList items={this.forgeItems()} toCardItem={this.projectToCardItem} columns={false} routeTo={this.props.routeTo} />
 
                 <h2 className="mt-5">The Vault</h2>
                 <div className="d-flex flex-row flex-wrap">
                     <p>{Constants.VAULT_DESCRIPTION}</p>
                     <Search className="ml-auto w-35 d-lg" onChange={this.onSearchChanged}/>
                 </div>
-                <CardList items={this.vaultItems()} toCardItem={this.projectToCardItem} columns={true} />
+                <CardList items={this.vaultItems()} toCardItem={this.projectToCardItem} columns={true} routeTo={this.props.routeTo} />
                 <div className="d-flex justify-content-center">
                     <h2 className="m-5">The End</h2>
                 </div>

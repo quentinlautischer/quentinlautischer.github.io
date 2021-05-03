@@ -7,7 +7,8 @@ import { Card as BSCard, Badge } from 'react-bootstrap';
 import { Info as InfoIcon } from 'react-feather';
 
 interface CardProps {
-    item: CardItem
+    item: CardItem;
+    routeTo: (path: string) => void;
 }
 
 class Card extends React.Component<CardProps> {
@@ -27,9 +28,9 @@ class Card extends React.Component<CardProps> {
                     <BSCard.Title>
                         {this.props.item.title}
                         { this.props.item.extendedInfo &&
-                            <Link to={'/projects/' + this.props.item.title} >
+                            <a onClick={() => this.props.routeTo('/projects/' + this.props.item.title)}>
                                 <InfoIcon className='float-right' strokeWidth={1} />
-                            </Link>
+                            </a>
                         }
                     </BSCard.Title>
                     {

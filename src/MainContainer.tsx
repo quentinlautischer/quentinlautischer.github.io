@@ -1,10 +1,11 @@
 import React, { SyntheticEvent } from 'react';
-import { HashRouter, Switch, Route, Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
  
 import Home from './Pages/Home';
 import Projects from './Pages/Projects';
 import UnderConstruction from './Pages/UnderConstruction';
+
+import If from './Components/If';
 
 import { createBrowserHistory } from 'history';
 import { Container } from 'react-bootstrap';
@@ -16,15 +17,36 @@ enum NavQueuePosition {
   None, Up, Down, Left, Top
 }
 
+class Router {
+  history: string[] = [];
+
+  constructor(base: string) {
+    this.history.push(base);
+  }
+
+  push(path: string) {
+    this.history.push(path);
+  }
+
+  pop() {
+    this.history.pop();
+  }
+
+  location() {
+    return {
+      pathname: this.history[this.history.length-1]
+    }
+  }
+}
+
+interface MainContainerProps {
+}
+
 interface MainContainerState {
   navHovered: boolean;
   pageChanged: boolean;
   navQueued: NavQueuePosition;
-  history: any;
-}
-
-interface MainContainerProps {
-  history: any;
+  history: Router;
 }
 
 class MainContainer extends React.Component<MainContainerProps, MainContainerState> {
@@ -41,90 +63,91 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
         navHovered: false, 
         pageChanged: false, 
         navQueued: NavQueuePosition.Top, 
-        history: createBrowserHistory({basename: process.env.PUBLIC_URL}) };
+        history: new Router(process.env.PUBLIC_URL),
+      }
     }
 
     componentDidMount() {
       this.projectPageElement = ReactDOM.findDOMNode(this.projectsPageRef.current) as Element;
     }
+
+    routeToBase = () => {
+      this.state.history.push('');
+      this.forceUpdate();
+    }
+
+    routeTo = (path: string) => {
+      console.log("Routing to: " + path);
+      this.state.history.push(path);
+      this.forceUpdate();
+    }
   
     render() {
+        console.log("Rendering: " + this.state.history.location().pathname)
         const navQueuedClassName = 'nav-queued';
         const downQd = this.state.navQueued === NavQueuePosition.Down;
         const upQd = this.state.navQueued === NavQueuePosition.Up;
         const leftQd = this.state.navQueued === NavQueuePosition.Left;
         
         return (
-            <HashRouter>
-            <Container className="d-flex mt-5 h-100" onWheel={this.onWheel} onScroll={this.onScroll}>
-                <Switch>
-                <Route path="/projects/QVision">
-                  <Link to='/projects'>
-                    <ArrowLeftIcon className={'page-button page-button-left' + (leftQd ? navQueuedClassName : '')}
-                        size={leftQd ? 48 : 24}
-                      />
-                  </Link>
-                  <UnderConstruction />
-                  {/* {<ProjectDetails id="qvision"/>} */}
-                </Route>
-                <Route path="/projects/TaskT">
-                  <Link to='/projects'>
-                    <ArrowLeftIcon className={'page-button page-button-left ' + (leftQd ? navQueuedClassName : '')}
-                        size={leftQd ? 48 : 24}
-                      />
-                  </Link>
+          <Container className="d-flex mt-5 h-100" onWheel={this.onWheel} onScroll={this.onScroll}>
+              <If condition={this.state.history.location().pathname === '/projects/QVision'}>
+                <ArrowLeftIcon 
+                  onClick={() => this.routeTo('/projects')} 
+                  className={'page-button page-button-left' + (leftQd ? navQueuedClassName : '')}
+                  size={leftQd ? 48 : 24}
+                />
+                <UnderConstruction />
+                {/* {<ProjectDetails id="qvision"/>} */}
+              </If>
+              <If condition={this.state.history.location().pathname === '/projects/TaskT'}>
+                  <ArrowLeftIcon onClick={() => this.routeTo('/projects')} className={'page-button page-button-left ' + (leftQd ? navQueuedClassName : '')}
+                    size={leftQd ? 48 : 24}
+                  />
                   <UnderConstruction />
                   {/* <ProjectDetails id="taskt"/> */}
-                </Route>
-                <Route path="/projects/Tether">
-                  <Link to='/projects'>
-                    <ArrowLeftIcon className={'page-button page-button-left ' + (leftQd ? navQueuedClassName : '')}
-                        size={leftQd ? 48 : 24}
-                      />
-                  </Link>
+              </If>
+              <If condition={this.state.history.location().pathname === '/projects/Tether'}>
+                  <ArrowLeftIcon onClick={() => this.routeTo('/projects')} className={'page-button page-button-left ' + (leftQd ? navQueuedClassName : '')}
+                    size={leftQd ? 48 : 24}
+                  />
                   <UnderConstruction />
                   {/* {<ProjectDetails id="tether" />} */}
-                </Route>
-                <Route exact path="/projects">
-                  { (this.state.navQueued === NavQueuePosition.Top || this.state.navQueued === NavQueuePosition.Up) &&
-                    <Link to='/'>
-                      <ArrowUpIcon 
-                        className={'page-button page-button-up ' + (upQd ? navQueuedClassName : '')}
-                        size={upQd ? 48 : 24}
-                      />
-                    </Link>
-                  }
-                  <Projects ref={this.projectsPageRef}/>
-                </Route>
-                <Route exact path="/">
-                  <Home />
-                  <Link to='/projects'>
-                    <ArrowDownIcon  
-                      className={'page-button page-button-down ' + (downQd ? navQueuedClassName : '')}
-                      size={downQd ? 48 : 24}
-                    />
-                  </Link>
-                </Route>
-              </Switch>
-              <Route exact path="/">                 
-              </Route>
-              </Container>
-          </HashRouter>
+              </If>
+              <If condition={this.state.history.location().pathname === '/projects'}>
+                <If condition={(this.state.navQueued === NavQueuePosition.Top || this.state.navQueued === NavQueuePosition.Up)}>
+                  <ArrowUpIcon 
+                      onClick={() => this.routeTo('')}
+                      className={'page-button page-button-up ' + (upQd ? navQueuedClassName : '')}
+                      size={upQd ? 48 : 24}
+                  />
+                </If>
+                <Projects ref={this.projectsPageRef} routeTo={this.routeTo}/>
+              </If>
+              <If condition={this.state.history.location().pathname === ''}>
+                <Home routeTo={this.routeTo} />
+                <ArrowDownIcon 
+                  onClick={() => this.routeTo('/projects')} 
+                  className={'page-button page-button-down ' + (downQd ? navQueuedClassName : '')}
+                  size={downQd ? 48 : 24}
+                />
+              </If>
+            </Container>
         );
     }
 
     onWheel = (e: SyntheticEvent) => {
-      if (this.state.history.location.pathname === '/'){
+      if (this.state.history.location().pathname === ''){
         this.handleWheelOnHomePage(e);
-      } else if (this.state.history.location.pathname === '/projects'){
+      } else if (this.state.history.location().pathname === '/projects'){
         this.handleWheelOnProjectsPage(e);
-      } else if (this.state.history.location.pathname.includes('/projects/')){
+      } else if (this.state.history.location().pathname.includes('/projects/')){
         this.handleWheelOnProjectPage(e);
       }
     }
 
     onScroll = (e: SyntheticEvent) => {
-      if (this.state.history.location.pathname === '/projects'){
+      if (this.state.history.location().pathname === '/projects'){
         if (this.IsProjectPageAtTop()){
           this.setState({navQueued: NavQueuePosition.Top});
         }
@@ -170,7 +193,7 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
 
         if (this.state.navQueued === NavQueuePosition.Up) {
           // Fire Navigation Event
-          this.state.history.push('/');
+          this.state.history.push('');
         } 
         else if (this.state.navQueued === NavQueuePosition.Top) {
           this.setState({navQueued: NavQueuePosition.Up});
