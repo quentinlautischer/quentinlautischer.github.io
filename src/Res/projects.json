@@ -82,7 +82,7 @@
         "title":  "NoteDown",
         "location": "vault",
         "date":   "2017-04-01",
-        "imgSrc": "assets/NoteDown.png",
+        "imgSrc": "assets/notedown.png",
         "categories": ["Javascript", "ReactJS", "Electron", "Node", "MongoDB"],
         "description": "This was my final year capstone project. We created a note-taking app that would interpret and render Markdown notes in real-time. We had multi-platform support for a Desktop Client(Windows/Mac) and a mobile client(iOS/Android). We built a custom Markdown parser and handled concurrent sessions on the same set of notes."
     },
