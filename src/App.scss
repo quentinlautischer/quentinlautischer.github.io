@@ -10,8 +10,17 @@ $button-background: hsla(60, 4%, 97%, 1);
 
 html {
   background-color: $background;
-  
+  height  : 100%;
+  overflow: hidden;
+  position: relative;
 }
+body {
+  background-color: $background;
+  height  : 100%;
+  overflow: none;
+  position: relative;
+}
+
 
 .background {
   background-color: $background;
@@ -23,14 +32,6 @@ html {
 
 div, nav {
   background-color: rgba(255, 0, 0, 0);
-}
-
-html {
-  height: 100%;
-}
-body {
-  height: 100%;
-  overflow-y: hidden;
 }
 
 .h-30 {
@@ -59,16 +60,23 @@ body {
 }
 
 
-.email-link:hover {
-  color: orange;
+.email-link {
+  &:hover {
+    color: orange;
+  }
 }
 
 
+.hl-red {
+  background-color: red;
+}
+
+.hl-green {
+  background-color: green;
+}
+
 
 .scroll-indicator-text {
-  position: relative;
-  display: block;
-  bottom: 0px;
   font-weight: 600;
   color: $primary-dark;
 
@@ -79,13 +87,10 @@ body {
 }
 
 .scroll-tail {
-  position: relative;
-  display: block;
   color: $primary-dark;
-  bottom: 0px;
-  left: 50%;
+  // left: 50%;
   margin: -3px 0px 0px -3px;
-  width: 6px;
+  width: 4px;
   height: 25px;
   background: $primary-dark;
   border-radius: 10%;
@@ -96,15 +101,35 @@ body {
   }
 }
 
+.scroll-indicator-text-reverse {
+  font-weight: 600;
+  color: $primary-dark;
+
+  &.hovering {
+    transition: all .2s ease-in-out;
+    transform: translateY(+55px);
+  }
+}
+
+.scroll-tail-reverse {
+  color: $primary-dark;
+  // left: 50%;
+  margin: -3px 0px 0px -3px;
+  width: 4px;
+  height: 25px;
+  background: $primary-dark;
+  border-radius: 10%;
+  
+  &.hovering {
+    transition: all .2s ease-in-out;
+    transform: scaleY(3) translateY(+8px)
+  }
+}
+
 @for $i from 0 through 10 {
   .z-#{$i} {
     z-index: #{$i};
   }
-}
-
-.projects-page {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }
 
 #root {
@@ -185,6 +210,9 @@ body {
   padding: 0;
   max-width: 100%;
   width: 100%;
+}
+
+.height-fill {
   height: 100%;
 }
 
@@ -243,6 +271,8 @@ a {
   overflow-y: scroll;
   position: relative;
   height: 100%;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .paralax-item {

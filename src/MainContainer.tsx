@@ -46,6 +46,7 @@ interface MainContainerProps {
 interface MainContainerState {
   navHovered: boolean;
   pageChanged: boolean;
+  lastTouchY: number | null;
   navQueued: NavQueuePosition;
   history: Router;
 }
@@ -63,6 +64,7 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
       this.state = { 
         navHovered: false, 
         pageChanged: false, 
+        lastTouchY: null,
         navQueued: NavQueuePosition.Top, 
         history: new Router(process.env.PUBLIC_URL),
       }
@@ -91,7 +93,12 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
         const leftQd = this.state.navQueued === NavQueuePosition.Left;
         
         return (
-          <Container className="d-flex h-100 full-width-fill background justify-content-center" onWheel={this.onWheel} onScroll={this.onScroll}>
+          <Container className="d-flex flex-column h-100 full-width-fill background justify-content-center" 
+            onWheel={this.onWheel} 
+            onScroll={this.onScroll}
+            onTouchStart={this.onTouchStart}
+            onTouchMove={this.onTouchMove}
+          >
               <If condition={this.state.history.location().pathname === '/projects/QVision'}>
                 <ArrowLeftIcon 
                   onClick={() => this.routeTo('/projects')} 
@@ -117,31 +124,42 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
               </If>
               <If condition={this.state.history.location().pathname === '/projects'}>
                 <If condition={(this.state.navQueued === NavQueuePosition.Top || this.state.navQueued === NavQueuePosition.Up)}>
-                  <ArrowUpIcon 
-                      onClick={() => this.routeTo('')}
-                      className={'page-button page-button-up ' + (upQd ? navQueuedClassName : '')}
-                      size={upQd ? 48 : 24}
-                  />
+                  <If condition={!upQd}>
+                    <ScrollIndicator size="md" inverse={true}
+                      onClick={() => {this.routeTo('')}}  
+                      onMouseOver={() => {this.setState({navQueued: NavQueuePosition.Up})}} 
+                      onMouseLeave={() => {this.setState({navQueued: NavQueuePosition.None})}} 
+                    />
+                  </If>
+                  <If condition={upQd}>
+                    <ScrollIndicator size="lg" inverse={true}
+                      onClick={() => {this.routeTo('')}}  
+                      onMouseOver={() => {this.setState({navQueued: NavQueuePosition.Up})}} 
+                      onMouseLeave={() => {this.setState({navQueued: NavQueuePosition.None})}} 
+                    /> 
+                  </If> 
                 </If>
-                <div className='d-flex flex-column'> 
-                  <div className="z-1 h-100 mt-5">
-                    <Projects ref={this.projectsPageRef} routeTo={this.routeTo}/>
-                  </div>
-                </div>
+                <Projects ref={this.projectsPageRef} routeTo={this.routeTo}/>
               </If>
               <If condition={this.state.history.location().pathname === ''}>
-                <Home routeTo={this.routeTo} />
+                <Home className='align-self-stretch h-100' routeTo={this.routeTo} />
+                <div>
                 <If condition={!downQd}>
-                  <ScrollIndicator size="md" onMouseOver={() => {this.setState({navQueued: NavQueuePosition.Down})}} onMouseLeave={() => {this.setState({navQueued: NavQueuePosition.None})}} />            
+                  <ScrollIndicator size="md"
+                    onClick={() => {this.routeTo('/projects')}}  
+                    onMouseOver={() => {this.setState({navQueued: NavQueuePosition.Down})}} 
+                    onMouseLeave={() => {this.setState({navQueued: NavQueuePosition.None})}} 
+                  />            
                 </If>
                 <If condition={downQd}>
-                  <ScrollIndicator size="lg" onMouseOver={() => {this.setState({navQueued: NavQueuePosition.Down})}} onMouseLeave={() => {this.setState({navQueued: NavQueuePosition.None})}}/>            
+                  <ScrollIndicator size="lg"
+                    onClick={() => {this.routeTo('/projects')}}  
+                    onMouseOver={() => {this.setState({navQueued: NavQueuePosition.Down})}} 
+                    onMouseLeave={() => {this.setState({navQueued: NavQueuePosition.None})}}
+                  />            
                 </If>
-                {/* <ArrowDownIcon 
-                  onClick={() => this.routeTo('/projects')} 
-                  className={'page-button page-button-down ' + (downQd ? navQueuedClassName : '')}
-                  size={downQd ? 48 : 24}
-                /> */}
+                </div>
+                
               </If>
             </Container>
         );
@@ -163,6 +181,59 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
           this.setState({navQueued: NavQueuePosition.Top});
         }
       } 
+    }
+
+    handleTouchOnHomePage = (e: SyntheticEvent) => {
+      let event = (e.nativeEvent as TouchEvent);
+
+      if (this.state.lastTouchY == null)
+        return;
+
+      if (event.touches[0].clientY + 100 < this.state.lastTouchY)
+      this.setState({navQueued: NavQueuePosition.Down});
+
+      if (event.touches[0].clientY + 150 < this.state.lastTouchY && this.state.navQueued == NavQueuePosition.Down)
+      {
+        this.setState({lastTouchY: null});
+        this.state.history.push('/projects');
+      }
+      
+    }
+
+    handleTouchOnProjectPage = (e: SyntheticEvent) => {
+      let event = (e.nativeEvent as TouchEvent);
+
+      if (this.state.lastTouchY == null)
+        return;
+
+      if (!this.IsProjectPageAtTop())
+        return;
+
+      if (event.touches[0].clientY - 100 > this.state.lastTouchY)
+        this.setState({navQueued: NavQueuePosition.Up});
+
+      if (event.touches[0].clientY - 150 < this.state.lastTouchY && this.state.navQueued == NavQueuePosition.Up)
+        this.state.history.push('');
+    }
+
+    onTouchMove = (e: SyntheticEvent) => {
+      console.log('touch move');
+
+      if (this.state.history.location().pathname === ''){
+        this.handleTouchOnHomePage(e);
+      } else if (this.state.history.location().pathname === '/projects'){
+        this.handleTouchOnProjectPage(e);
+      }
+    }
+
+    onTouchStart = (e: SyntheticEvent) => {
+      console.log('touch start');
+      let event = (e.nativeEvent as TouchEvent);
+      this.setState({lastTouchY: event.touches[0].clientY});
+    }
+
+    onTouchEnd = (e: SyntheticEvent) => {
+      this.setState({lastTouchY: null});
     }
 
     IsWheelUp = (e: SyntheticEvent) => {

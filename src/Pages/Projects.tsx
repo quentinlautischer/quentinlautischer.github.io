@@ -24,16 +24,15 @@ class Projects extends React.Component<ProjectsProps, ProjectsState> {
     }
     
     render() {
-        return (<div className="projects-page" >
-            <div className="projects-container pl-5 pr-5 pb-5">
-                <div>
-                <h2 className="mt-5">The Forge</h2>
-                <p>{Constants.FORGE_DESCRIPTION}</p>
+        return (<div className="d-flex flex-column z-1 h-100 m-5 projects-page">
+                <div className="d-flex flex-column flex-wrap">
+                    <h2 className="mt-5">The Forge</h2>
+                    <p>{Constants.FORGE_DESCRIPTION}</p>
                 </div>
                 <CardList items={this.forgeItems()} toCardItem={this.projectToCardItem} columns={false} routeTo={this.props.routeTo} />
 
-                <h2 className="mt-5">The Vault</h2>
-                <div className="d-flex flex-row flex-wrap">
+                <div className="d-flex flex-column flex-wrap">
+                    <h2 className="mt-5">The Vault</h2>
                     <p>{Constants.VAULT_DESCRIPTION}</p>
                     <Search className="ml-auto w-35 d-lg" onChange={this.onSearchChanged}/>
                 </div>
@@ -41,7 +40,6 @@ class Projects extends React.Component<ProjectsProps, ProjectsState> {
                 <div className="d-flex justify-content-center">
                     <h2 className="m-5">The End</h2>
                 </div>
-            </div>
         </div>);
     }
 
