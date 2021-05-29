@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
  
 import Home from './Pages/Home';
 import Projects from './Pages/Projects';
+import ScrollIndicator from './Components/ScrollIndicator';
 import UnderConstruction from './Pages/UnderConstruction';
 
 import If from './Components/If';
@@ -90,7 +91,7 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
         const leftQd = this.state.navQueued === NavQueuePosition.Left;
         
         return (
-          <Container className="d-flex mt-5 h-100" onWheel={this.onWheel} onScroll={this.onScroll}>
+          <Container className="d-flex h-100 full-width-fill background justify-content-center" onWheel={this.onWheel} onScroll={this.onScroll}>
               <If condition={this.state.history.location().pathname === '/projects/QVision'}>
                 <ArrowLeftIcon 
                   onClick={() => this.routeTo('/projects')} 
@@ -122,15 +123,25 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
                       size={upQd ? 48 : 24}
                   />
                 </If>
-                <Projects ref={this.projectsPageRef} routeTo={this.routeTo}/>
+                <div className='d-flex flex-column'> 
+                  <div className="z-1 h-100 mt-5">
+                    <Projects ref={this.projectsPageRef} routeTo={this.routeTo}/>
+                  </div>
+                </div>
               </If>
               <If condition={this.state.history.location().pathname === ''}>
                 <Home routeTo={this.routeTo} />
-                <ArrowDownIcon 
+                <If condition={!downQd}>
+                  <ScrollIndicator size="md" onMouseOver={() => {this.setState({navQueued: NavQueuePosition.Down})}} onMouseLeave={() => {this.setState({navQueued: NavQueuePosition.None})}} />            
+                </If>
+                <If condition={downQd}>
+                  <ScrollIndicator size="lg" onMouseOver={() => {this.setState({navQueued: NavQueuePosition.Down})}} onMouseLeave={() => {this.setState({navQueued: NavQueuePosition.None})}}/>            
+                </If>
+                {/* <ArrowDownIcon 
                   onClick={() => this.routeTo('/projects')} 
                   className={'page-button page-button-down ' + (downQd ? navQueuedClassName : '')}
                   size={downQd ? 48 : 24}
-                />
+                /> */}
               </If>
             </Container>
         );

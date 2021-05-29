@@ -25,8 +25,7 @@ class Projects extends React.Component<ProjectsProps, ProjectsState> {
     
     render() {
         return (<div className="projects-page" >
-            <div className="projects-container">
-                <h1>Projects</h1>
+            <div className="projects-container pl-5 pr-5 pb-5">
                 <div>
                 <h2 className="mt-5">The Forge</h2>
                 <p>{Constants.FORGE_DESCRIPTION}</p>

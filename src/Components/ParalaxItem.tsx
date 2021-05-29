@@ -7,6 +7,7 @@ import { Subscribe } from 'unstated';
 interface ParalaxItemProps {
     level: number;
     inversed?: boolean;
+    className?: string;
 }
 
 class ParalaxItem extends React.Component<ParalaxItemProps> {
@@ -25,7 +26,7 @@ class ParalaxItem extends React.Component<ParalaxItemProps> {
             }
 
             return (
-                <div className='paralax-item' style={{right: `${rightOffset}px`, bottom: `${bottomOffset}px`}}>
+                <div className={'paralax-item ' + this.props.className } style={{right: `${rightOffset}px`, bottom: `${bottomOffset}px`}}>
                     {this.props.children}
                 </div>
             )}
