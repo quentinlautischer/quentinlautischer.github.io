@@ -70,6 +70,7 @@ class Projects extends React.Component<ProjectsProps, ProjectsState> {
             imgSrc: item.imgSrc,
             vidSrc: item.vidSrc,
             appSrc: item.appSrc,
+            gitSrc: item.gitSrc,
             description: item.description,
         } as CardItem;
 

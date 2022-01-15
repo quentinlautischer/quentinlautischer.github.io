@@ -122,6 +122,27 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
                   <UnderConstruction />
                   {/* {<ProjectDetails id="tether" />} */}
               </If>
+              <If condition={this.state.history.location().pathname === '/projects/Project Terra'}>
+                  <ArrowLeftIcon onClick={() => this.routeTo('/projects')} className={'page-button page-button-left ' + (leftQd ? navQueuedClassName : '')}
+                    size={leftQd ? 48 : 24}
+                  />
+                  <UnderConstruction />
+                  {/* {<ProjectDetails id="terra" />} */}
+              </If>
+              <If condition={this.state.history.location().pathname === '/projects/Project Arena'}>
+                  <ArrowLeftIcon onClick={() => this.routeTo('/projects')} className={'page-button page-button-left ' + (leftQd ? navQueuedClassName : '')}
+                    size={leftQd ? 48 : 24}
+                  />
+                  <UnderConstruction />
+                  {/* {<ProjectDetails id="arena" />} */}
+              </If>
+              <If condition={this.state.history.location().pathname === '/projects/QDirStat'}>
+                  <ArrowLeftIcon onClick={() => this.routeTo('/projects')} className={'page-button page-button-left ' + (leftQd ? navQueuedClassName : '')}
+                    size={leftQd ? 48 : 24}
+                  />
+                  <UnderConstruction />
+                  {/* {<ProjectDetails id="qdirstat" />} */}
+              </If>
               <If condition={this.state.history.location().pathname === '/projects'}>
                 <If condition={(this.state.navQueued === NavQueuePosition.Top || this.state.navQueued === NavQueuePosition.Up)}>
                   <If condition={!upQd}>

@@ -1,11 +1,12 @@
 [
     {
-        "title": "QVision",
+        "title": "QDirStat",
         "location": "forge",
-        "date": "2020-01-01",
-        "imgSrc": "assets/bits.jpg",
-        "categories": ["C++", "Computer Vision", "Automation"],
-        "description": "This project is a toolbox that provides system automation through multiple means, most notably, computer vision. This project is a playground for me to explore and gain technical skills in C++. QVision is short for Control Vision.",
+        "date": "2021-05-01",
+        "imgSrc": "assets/qdirstat.png",
+        "categories": ["Rust", "CLI", "OS"],
+        "description": "I got tired of using GUI based filesystem statistic applications to determine how to cleanup my computer drives. As an intro into learning the Rust programming language I built this lightweight command line tool to help quickly determine and eliminate folders and files wasting precious hard drive space.",
+        "gitSrc": "https://github.com/quentinlautischer/QDirStat",
         "extendedInfo": {}
     },
     {
@@ -19,8 +20,35 @@
         "extendedInfo": {}
     },
     {
-        "title": "Tether",
+        "title": "Project Arena",
         "location": "forge",
+        "date": "2021-08-01",
+        "imgSrc": "assets/projectarena.png",
+        "categories": ["C++", "CLI\\UX", "Game"],
+        "description": "This project is my C++ learning playground. Its built using ncurses and is a turn based game that runs in a terminal. Technical feature will include local and remote turned based interaction and an auto-updating client.",
+        "extendedInfo": {}
+    },
+    {
+        "title": "Project Terra",
+        "location": "forge",
+        "date": "2021-06-01",
+        "imgSrc": "assets/terrabattlexcrop.png",
+        "categories": ["C++", "UX", "Game"],
+        "description": "An old beloved game of mine was erased from the earth when the publishers could not longer afford the servers it ran on. I've created a game engine from scratch and scraped the wikis in an attempt to recreate the game I once loved.",
+        "extendedInfo": {}
+    },
+    {
+        "title": "QVision",
+        "location": "void",
+        "date": "2020-01-01",
+        "imgSrc": "assets/bits.jpg",
+        "categories": ["C++", "Computer Vision", "Automation"],
+        "description": "This project is a toolbox that provides system automation through multiple means, most notably, computer vision. This project is a playground for me to explore and gain technical skills in C++. QVision is short for Control Vision.",
+        "extendedInfo": {}
+    },
+    {
+        "title": "Tether",
+        "location": "void",
         "date": "2020-05-01",
         "imgSrc": "assets/bits.jpg",
         "categories": ["Rust", "Protocols", "WebAssembly"],

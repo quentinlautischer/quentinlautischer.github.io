@@ -8,6 +8,7 @@ export interface Project {
     imgSrc: string,
     vidSrc?: string | null,
     appSrc?: string | null,
+    gitSrc? : string | null,
     description: string,
     extendedInfo?: any
 }
@@ -19,6 +20,7 @@ export interface CardItem {
     imgSrc?: string | null,
     vidSrc?: string | null,
     appSrc?: string | null,
+    gitSrc?: string | null,
     description: string,
     extendedInfo?: any;
 }

@@ -48,6 +48,9 @@ class Card extends React.Component<CardProps> {
                     { this.props.item.appSrc &&
                         <Badge className='heroku' variant='secondary'><a href={this.props.item.appSrc}>Visit WebApp <ArrowUpRightIcon size={14}/></a></Badge>
                     }
+                    { this.props.item.gitSrc &&
+                        <Badge className='github' variant='secondary'><a href={this.props.item.gitSrc}>View Code <ArrowUpRightIcon size={14}/></a></Badge>
+                    }
                 </BSCard.Body>
             </BSCard>);
     }
