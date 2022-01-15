@@ -14,7 +14,7 @@
         "location": "forge",
         "date": "2020-01-01",
         "imgSrc": "assets/taskt.png",
-        "categories": ["React", "UX", "Full-stack", "Authentication"],
+        "categories": ["React", "UX", "Full-Stack", "Authentication"],
         "description": "This project is an account-based tracking system for absolute and relative todos. Ideal for house maintenance. Setup relative recurrences for things like vacuuming and fridge cleaning. Setup absolute recurrences for things like taxes and furnace filter changes.",
         "appSrc": "https://projektq-taskt.herokuapp.com/",
         "extendedInfo": {}
