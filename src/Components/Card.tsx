@@ -39,9 +39,11 @@ class Card extends React.Component<CardProps> {
                             return(<Badge key={c} variant='secondary'>{c}</Badge>);
                         })
                     }
-                    <BSCard.Text>
+                    <BSCard.Text className='card-body-text'>
                         {this.props.item.description}
                     </BSCard.Text>
+                </BSCard.Body>
+                <BSCard.Footer hidden={!(this.props.item.vidSrc || this.props.item.appSrc || this.props.item.gitSrc)}>
                     { this.props.item.vidSrc &&
                         <Badge className='youtube' variant='secondary'><a href={this.props.item.vidSrc}>View YouTube <ArrowUpRightIcon size={14}/></a></Badge>
                     }
@@ -51,7 +53,7 @@ class Card extends React.Component<CardProps> {
                     { this.props.item.gitSrc &&
                         <Badge className='github' variant='secondary'><a href={this.props.item.gitSrc}>View Code <ArrowUpRightIcon size={14}/></a></Badge>
                     }
-                </BSCard.Body>
+                </BSCard.Footer>
             </BSCard>);
     }
 }

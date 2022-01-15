@@ -42,6 +42,11 @@ div, nav {
   height: 65%;
 }
 
+.w-80 {
+  width: 80%;
+  margin: auto !important;
+}
+
 .mb-15 {
   margin-bottom: 15rem !important;
 }
@@ -273,6 +278,10 @@ a {
   height: 100%;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+.card-body-text {
+  margin-top: 1em;
 }
 
 .paralax-item {

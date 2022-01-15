@@ -24,22 +24,23 @@ class Projects extends React.Component<ProjectsProps, ProjectsState> {
     }
     
     render() {
-        return (<div className="d-flex flex-column z-1 h-100 m-5 projects-page">
-                <div className="d-flex flex-column flex-wrap">
-                    <h2 className="mt-5">The Forge</h2>
-                    <p>{Constants.FORGE_DESCRIPTION}</p>
-                </div>
-                <CardList items={this.forgeItems()} toCardItem={this.projectToCardItem} columns={false} routeTo={this.props.routeTo} />
+        return (
+        <div className="d-flex flex-column z-1 h-100 m-5 projects-page w-80">
+            <div className="d-flex flex-column flex-wrap">
+                <h2 className="mt-5">The Forge</h2>
+                <p>{Constants.FORGE_DESCRIPTION}</p>
+            </div>
+            <CardList items={this.forgeItems()} toCardItem={this.projectToCardItem} columns={false} routeTo={this.props.routeTo} />
 
-                <div className="d-flex flex-column flex-wrap">
-                    <h2 className="mt-5">The Vault</h2>
-                    <p>{Constants.VAULT_DESCRIPTION}</p>
-                    <Search className="ml-auto w-35 d-lg" onChange={this.onSearchChanged}/>
-                </div>
-                <CardList items={this.vaultItems()} toCardItem={this.projectToCardItem} columns={true} routeTo={this.props.routeTo} />
-                <div className="d-flex justify-content-center">
-                    <h2 className="m-5">The End</h2>
-                </div>
+            <div className="d-flex flex-column flex-wrap">
+                <h2 className="mt-5">The Vault</h2>
+                <p>{Constants.VAULT_DESCRIPTION}</p>
+                <Search className="ml-auto w-35 d-lg" onChange={this.onSearchChanged}/>
+            </div>
+            <CardList items={this.vaultItems()} toCardItem={this.projectToCardItem} columns={true} routeTo={this.props.routeTo} />
+            <div className="d-flex justify-content-center">
+                <h2 className="m-5">The End</h2>
+            </div>
         </div>);
     }
 
