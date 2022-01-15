@@ -25,7 +25,7 @@
         "date": "2021-08-01",
         "imgSrc": "assets/projectarena.png",
         "categories": ["C++", "CLI\\UX", "Game"],
-        "description": "This project is my C++ learning playground. Its built using ncurses and is a turn based game that runs in a terminal. Technical feature will include local and remote turned based interaction and an auto-updating client.",
+        "description": "This project is my C++ playground. Its built using ncurses and is a turn based game that runs in a terminal. Technical features will include local and remote turned based interaction and an auto-updating client.",
         "extendedInfo": {}
     },
     {

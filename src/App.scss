@@ -166,17 +166,29 @@ div, nav {
   .fullname-header {
     font-size: 5em;
   }
+
+  .extended-info-btn {
+    display: none;
+  }
 }
 
 @include media-breakpoint-down(sm) {
   .fullname-header {
     font-size: 4em;
   }
+
+  .extended-info-btn {
+    display: none;
+  }
 }
 
 @include media-breakpoint-down(xs) {
   .fullname-header {
     font-size: 3em;
+  }
+
+  .extended-info-btn {
+    display: none;
   }
 }
 

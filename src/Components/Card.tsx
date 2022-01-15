@@ -29,7 +29,7 @@ class Card extends React.Component<CardProps> {
                     <BSCard.Title>
                         {this.props.item.title}
                         { this.props.item.extendedInfo &&
-                            <a onClick={() => this.props.routeTo('/projects/' + this.props.item.title)}>
+                            <a className='extended-info-btn' onClick={() => this.props.routeTo('/projects/' + this.props.item.title)}>
                                 <InfoIcon className='float-right' strokeWidth={1} />
                             </a>
                         }
