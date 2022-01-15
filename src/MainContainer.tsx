@@ -8,10 +8,7 @@ import UnderConstruction from './Pages/UnderConstruction';
 
 import If from './Components/If';
 
-import { createBrowserHistory } from 'history';
 import { Container } from 'react-bootstrap';
-import { ArrowUp as ArrowUpIcon } from 'react-feather';
-import { ArrowDown as ArrowDownIcon } from 'react-feather';
 import { ArrowLeft as ArrowLeftIcon } from 'react-feather';
 
 enum NavQueuePosition {
@@ -213,7 +210,7 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
       if (event.touches[0].clientY + 100 < this.state.lastTouchY)
       this.setState({navQueued: NavQueuePosition.Down});
 
-      if (event.touches[0].clientY + 150 < this.state.lastTouchY && this.state.navQueued == NavQueuePosition.Down)
+      if (event.touches[0].clientY + 150 < this.state.lastTouchY && this.state.navQueued === NavQueuePosition.Down)
       {
         this.setState({lastTouchY: null});
         this.state.history.push('/projects');
@@ -233,7 +230,7 @@ class MainContainer extends React.Component<MainContainerProps, MainContainerSta
       if (event.touches[0].clientY - 100 > this.state.lastTouchY)
         this.setState({navQueued: NavQueuePosition.Up});
 
-      if (event.touches[0].clientY - 150 < this.state.lastTouchY && this.state.navQueued == NavQueuePosition.Up)
+      if (event.touches[0].clientY - 150 < this.state.lastTouchY && this.state.navQueued === NavQueuePosition.Up)
         this.state.history.push('');
     }
 

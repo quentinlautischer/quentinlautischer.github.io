@@ -5,9 +5,6 @@ interface IfProps {
 }
 
 class If extends React.Component<IfProps> {
-    constructor(props: IfProps) {
-        super(props);
-    }
 
     render() {
         return (<React.Fragment>

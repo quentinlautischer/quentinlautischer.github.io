@@ -51,7 +51,7 @@ class ScrollIndicator extends React.Component<ScrollIndicatorProps, ScrollIndica
 
         if (this.state.mouseOver)
             classNameExtended += ' hovering '
-        if (this.props.size == 'lg')
+        if (this.props.size === 'lg')
             classNameExtended += ' hovering '
 
         return (<div 

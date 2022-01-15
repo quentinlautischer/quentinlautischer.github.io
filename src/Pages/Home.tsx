@@ -1,9 +1,7 @@
 import React from 'react';
 
-import SquareButton from '../Components/SquareButton';
 import ParalaxItem from '../Components/ParalaxItem';
 import ExternalLink from '../Components/ExternalLink';
-import Nav from '../Components/Nav';
 
 import { GitHub as GitHubIcon } from 'react-feather';
 import { Linkedin as LinkedinIcon } from 'react-feather';
