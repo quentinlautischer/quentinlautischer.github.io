@@ -393,7 +393,7 @@ a:hover {
   // xs, sm: 576px, md: 768px
   @include media-breakpoint-down(md) {
     flex-direction: column;
-
+    column-count: 1;
     .card {
       margin-bottom: 20px;
     }
@@ -401,6 +401,7 @@ a:hover {
 
   //1200px, lg: 992px
   @include media-breakpoint-down(xl) {
+    column-count: 2;
     flex-direction: row;
   }
 }

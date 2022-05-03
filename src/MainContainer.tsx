@@ -11,6 +11,9 @@ import If from './Components/If';
 import { Container } from 'react-bootstrap';
 import { ArrowLeft as ArrowLeftIcon } from 'react-feather';
 
+import { styled } from "@mui/material/styles";
+import colors from "./colors";
+
 enum NavQueuePosition {
   None, Up, Down, Left, Top
 }
@@ -47,6 +50,11 @@ interface MainContainerState {
   navQueued: NavQueuePosition;
   history: Router;
 }
+
+const StyledContainer = styled(Container)({
+  backgroundColor: colors.contentBackground,
+  color: colors.text
+});
 
 class MainContainer extends React.Component<MainContainerProps, MainContainerState> {
     projectsPageRef: any;

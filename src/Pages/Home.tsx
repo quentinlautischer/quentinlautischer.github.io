@@ -15,9 +15,9 @@ interface HomeProps {
 class Home extends React.Component<HomeProps> {
     render() {
         return (
-            <div className={"d-flex flex-column justify-content-around full-width-fill " + this.props.className}>
+            <div className={"d-flex flex-column justify-content-center full-width-fill " + this.props.className}>
                 <div className="d-flex align-self-center z-2">
-                    <ParalaxItem level={0} inversed={true}>
+                    <ParalaxItem level={0} >
                         <h1 className='fullname-header'>Quentin Lautischer</h1>
                     </ParalaxItem>
                 </div>
@@ -36,6 +36,11 @@ class Home extends React.Component<HomeProps> {
                         <ExternalLink to='mailto:qlautischer@gmail.com' className="email-link">
                             <EmailIcon size={64} strokeWidth={1} />
                         </ExternalLink>
+                    </ParalaxItem>
+                </div>
+                <div className="d-flex align-self-center z-2">
+                    <ParalaxItem level={0} inversed={true}>
+                        <img src="assets/avatar.png" />
                     </ParalaxItem>
                 </div>
             </div>);
