@@ -39,8 +39,17 @@ class Home extends React.Component<HomeProps> {
                     </ParalaxItem>
                 </div>
                 <div className="d-flex align-self-center z-2">
-                    <ParalaxItem level={0} inversed={true}>
+                    <ParalaxItem level={1} inversed={false} className="nogap-right-10">
+                        <img height={140} width={80} src="assets/plant3.png" />
+                    </ParalaxItem>
+                    <ParalaxItem level={1} inversed={true} className="">
                         <img src="assets/avatar.png" />
+                    </ParalaxItem>
+                    <ParalaxItem level={2} inversed={true} className="align-self-end nogap-left-250">
+                        <img height={40} width={40} src="assets/coffee.png" />
+                    </ParalaxItem>
+                    <ParalaxItem level={1} inversed={false} className="align-self-end nogap-left-150">
+                        <img height={140} width={80} src="assets/plant4.png" />
                     </ParalaxItem>
                 </div>
             </div>);

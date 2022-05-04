@@ -16,10 +16,13 @@ class ParalaxContainer extends React.Component {
             <Provider>
                 <Subscribe to={[ParalaxSingleton]}>
                     { (paralax: ParalaxSingleton) => (
-                        <div className='paralax-container' onMouseMove={(e) => 
+                        <div className='paralax-container' 
+                        onMouseMove={(e) => 
                         {
                             this.calculateParalaxOffset(e, paralax);
-                        }} >
+                        }}
+                        // onAccelerometer()
+                        >
                             {this.props.children}
                         </div>
                     )}
@@ -39,6 +42,8 @@ class ParalaxContainer extends React.Component {
         paralaxSingleton.setOffsetLevel(1, {x: (mouseX - x) * 0.02, y: (mouseY - y) * 0.02});
         paralaxSingleton.setOffsetLevel(2, {x: (mouseX - x) * 0.06, y: (mouseY - y) * 0.03});
     }
+    
+    // Add one for mobile working on Roll/gamma => left/right and Patch/beta => up/down
 }
 
 export default ParalaxContainer;
